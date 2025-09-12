@@ -9,8 +9,13 @@ hamburger.addEventListener('click', () => {
     // Prevent body scroll when menu is open
     if (navMenu.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
+        // Add smooth animation delay
+        setTimeout(() => {
+            navMenu.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+        }, 10);
     } else {
         document.body.style.overflow = '';
+        navMenu.style.transition = 'left 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s ease';
     }
 });
 

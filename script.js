@@ -5,13 +5,30 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 });
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
+    document.body.style.overflow = '';
 }));
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -39,16 +56,21 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Intersection Observer for fade-in animations
+// Intersection Observer for fade-in animations - IMPROVED to prevent overlap
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('fade-in-up');
+            // Ensure proper z-index to prevent overlap
+            entry.target.style.zIndex = '10';
+        } else {
+            // Reset z-index when not visible
+            entry.target.style.zIndex = '';
         }
     });
 }, observerOptions);
@@ -59,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
     animateElements.forEach(el => observer.observe(el));
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+// Parallax effect for hero section - DISABLED to prevent overlap
+// window.addEventListener('scroll', () => {
+//     const scrolled = window.pageYOffset;
+//     const hero = document.querySelector('.hero');
+//     if (hero) {
+//         hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+//     }
+// });
 
 // Typing animation for hero title
 function typeWriter(element, text, speed = 100) {
@@ -376,6 +398,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     }
     
     // Space to scroll down
@@ -383,6 +406,41 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
         window.scrollBy(0, window.innerHeight);
     }
+});
+
+// Mobile-specific improvements
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+// Disable parallax completely to prevent overlap issues
+// window.addEventListener('scroll', () => {
+//     if (!isMobile()) {
+//         const scrolled = window.pageYOffset;
+//         const hero = document.querySelector('.hero');
+//         if (hero) {
+//             hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+//         }
+//     }
+// });
+
+// Improve touch interactions
+document.addEventListener('DOMContentLoaded', () => {
+    // Add touch-friendly classes
+    if (isMobile()) {
+        document.body.classList.add('mobile-device');
+    }
+    
+    // Improve button interactions on mobile
+    document.querySelectorAll('.cta-button, .register-button').forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        
+        button.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+    });
 });
 
 // Performance optimization: Throttle scroll events

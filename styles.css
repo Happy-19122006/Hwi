@@ -312,6 +312,8 @@ body::before {
     margin-top: 1rem;
     min-width: 250px;
     word-break: keep-all;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .cta-button::before {
@@ -590,6 +592,8 @@ body::before {
     letter-spacing: 2px;
     box-shadow: 0 0 25px rgba(255, 0, 51, 0.5);
     margin-bottom: 1rem;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .register-button:hover {

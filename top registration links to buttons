@@ -1,0 +1,44 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex ee97e2e..d2e1f67 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -56,7 +56,7 @@[m
+                 </div>[m
+             </div>[m
+             [m
+[31m-            <button class="cta-button">ENTER THE UPSIDE DOWN</button>[m
+[32m+[m[32m            <a href="https://unstop.com/o/4C6NHvo?lb=dajkFU0A" target="_blank" class="cta-button">ENTER THE UPSIDE DOWN</a>[m
+         </div>[m
+         <div class="hero-bg"></div>[m
+     </section>[m
+[36m@@ -172,7 +172,7 @@[m
+                 <div class="registration-cta">[m
+                     <h2 class="cta-title">JOIN THE BATTLE</h2>[m
+                     <p class="cta-description">Ready to face the Mind Flayer? Register your team now and prepare for the ultimate coding challenge.</p>[m
+[31m-                    <button class="register-button">REGISTER NOW</button>[m
+[32m+[m[32m                    <a href="https://unstop.com/o/4C6NHvo?lb=dajkFU0A" target="_blank" class="register-button">REGISTER NOW</a>[m
+                     <p class="registration-note">Registration opens soon. Stay tuned!</p>[m
+                 </div>[m
+                 <div class="registration-details">[m
+[1mdiff --git a/styles.css b/styles.css[m
+[1mindex 0b4352f..cf4b397 100644[m
+[1m--- a/styles.css[m
+[1m+++ b/styles.css[m
+[36m@@ -312,6 +312,8 @@[m [mbody::before {[m
+     margin-top: 1rem;[m
+     min-width: 250px;[m
+     word-break: keep-all;[m
+[32m+[m[32m    text-decoration: none;[m
+[32m+[m[32m    display: inline-block;[m
+ }[m
+ [m
+ .cta-button::before {[m
+[36m@@ -590,6 +592,8 @@[m [mbody::before {[m
+     letter-spacing: 2px;[m
+     box-shadow: 0 0 25px rgba(255, 0, 51, 0.5);[m
+     margin-bottom: 1rem;[m
+[32m+[m[32m    text-decoration: none;[m
+[32m+[m[32m    display: inline-block;[m
+ }[m
+ [m
+ .register-button:hover {[m

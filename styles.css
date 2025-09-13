@@ -20,13 +20,23 @@
 
 body {
     font-family: 'Rajdhani', sans-serif;
-    background-color: var(--dark-bg);
+    background: 
+        /* Very minimal overlay for text readability */
+        linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.3) 100%),
+        /* Background image */
+        url('back.jpg');
+    background-attachment: fixed;
+    background-size: 100% auto; /* Full width, maintain aspect ratio */
+    background-position: center top; /* Center horizontally, align to top */
+    background-repeat: no-repeat;
     color: var(--text-white);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* Grid Background */
+/* Very minimal overlay for text readability */
 body::before {
     content: '';
     position: fixed;
@@ -34,18 +44,37 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 0, 51, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 51, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background: 
+        /* Extremely subtle overlay for text readability */
+        linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.08) 100%);
     pointer-events: none;
     z-index: -1;
 }
 
+/* Removed complex animations to show image clearly */
+
+/* Mesh overlay - Subtle */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 0, 51, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 51, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
 }
 
 /* Navigation */
@@ -143,7 +172,7 @@ body::before {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Hero Section */
+/* Hero Section - Minimal glow */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -151,7 +180,9 @@ body::before {
     justify-content: center;
     text-align: center;
     position: relative;
-    background: radial-gradient(circle at center, rgba(255, 0, 51, 0.1) 0%, transparent 70%);
+    background: 
+        radial-gradient(circle at center, rgba(255, 0, 51, 0.02) 0%, rgba(139, 0, 0, 0.01) 50%, transparent 80%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%);
     padding: 120px 0 120px;
     overflow: hidden;
 }
@@ -330,10 +361,12 @@ body::before {
     background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
 }
 
-/* About Section */
+/* About Section - Minimal glow */
 .about {
     padding: 120px 0 100px;
-    background: linear-gradient(135deg, rgba(255, 0, 51, 0.05) 0%, transparent 50%);
+    background: 
+        radial-gradient(ellipse at center, rgba(139, 0, 0, 0.01) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(255, 0, 51, 0.01) 0%, rgba(139, 0, 0, 0.005) 50%, transparent 100%);
     position: relative;
     z-index: 2;
     margin-top: 20px;
@@ -366,9 +399,12 @@ body::before {
     text-shadow: 0 0 10px var(--primary-red);
 }
 
-/* Details Section */
+/* Details Section - Minimal glow */
 .details {
     padding: 100px 0;
+    background: 
+        radial-gradient(ellipse at 30% 20%, rgba(178, 34, 34, 0.01) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(139, 0, 0, 0.01) 100%);
     position: relative;
     z-index: 3;
     margin-top: 20px;
@@ -440,10 +476,12 @@ body::before {
     line-height: 1.6;
 }
 
-/* Rules Section */
+/* Rules Section - Minimal glow */
 .rules {
     padding: 100px 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(0, 255, 255, 0.05) 50%);
+    background: 
+        radial-gradient(ellipse at 70% 30%, rgba(220, 20, 60, 0.01) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(139, 0, 0, 0.01) 50%, rgba(0, 255, 255, 0.005) 100%);
     position: relative;
     z-index: 4;
     margin-top: 20px;
@@ -482,10 +520,12 @@ body::before {
     line-height: 1.6;
 }
 
-/* Registration Section */
+/* Registration Section - Minimal glow */
 .registration {
     padding: 100px 0;
-    background: linear-gradient(135deg, rgba(255, 0, 51, 0.05) 0%, transparent 50%);
+    background: 
+        radial-gradient(ellipse at center, rgba(255, 0, 51, 0.01) 0%, rgba(139, 0, 0, 0.01) 50%, transparent 80%),
+        linear-gradient(135deg, rgba(255, 0, 51, 0.01) 0%, rgba(0, 0, 0, 0.05) 50%, transparent 100%);
     position: relative;
     z-index: 5;
     margin-top: 20px;
@@ -618,9 +658,12 @@ body::before {
 
 /* Footer */
 .footer {
-    background: var(--dark-bg);
+    background: 
+        radial-gradient(ellipse at center, rgba(139, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(139, 0, 0, 0.1) 100%);
     border-top: 1px solid var(--primary-red);
     padding: 50px 0 20px;
+    position: relative;
 }
 
 .footer-content {
@@ -710,6 +753,15 @@ body::before {
     margin-bottom: 0.5rem;
 }
 
+/* Mobile Background Image Fix */
+@media (max-width: 768px) {
+    body {
+        background-size: cover; /* Cover entire mobile screen */
+        background-position: center center; /* Center the image */
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -748,13 +800,22 @@ body::before {
     }
 
     .hero {
-        padding: 100px 0 80px;
-        min-height: 90vh;
+        padding: 80px 0 60px;
+        min-height: 100vh; /* Full mobile screen height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Prevent content overflow */
     }
 
     .hero-content {
         gap: 1.5rem;
         padding: 0 15px;
+        width: 100%;
+        max-width: 100%;
+        animation: mobileFadeInUp 1s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
     }
 
     .hero-header {
@@ -768,6 +829,8 @@ body::before {
         line-height: 1.2;
         word-break: break-word;
         hyphens: auto;
+        animation: mobileGlow 2s ease-in-out infinite alternate;
+        animation-delay: 0.5s;
     }
 
     .hero-title {
@@ -859,6 +922,13 @@ body::before {
 }
 
 @media (max-width: 480px) {
+    /* Mobile background optimization for small screens */
+    body {
+        background-size: cover;
+        background-position: center center;
+        background-attachment: scroll;
+    }
+    
     .container {
         padding: 0 15px;
     }
@@ -872,8 +942,12 @@ body::before {
     }
 
     .hero {
-        padding: 80px 0 60px;
-        min-height: 85vh;
+        padding: 60px 0 40px;
+        min-height: 100vh; /* Full screen on small mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
     }
 
     .hero-content {
@@ -1139,6 +1213,33 @@ section.registration {
     }
 }
 
+/* Mobile-specific animations */
+@keyframes mobileFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mobileGlow {
+    from {
+        text-shadow: 
+            0 0 10px var(--primary-red),
+            0 0 20px var(--primary-red),
+            0 0 30px var(--primary-red);
+    }
+    to {
+        text-shadow: 
+            0 0 20px var(--primary-red),
+            0 0 30px var(--primary-red),
+            0 0 40px var(--primary-red);
+    }
+}
+
 .fade-in-up {
     animation: fadeInUp 0.8s ease forwards;
     position: relative;
@@ -1151,14 +1252,32 @@ section.registration {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--dark-bg);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-red);
+    background: linear-gradient(180deg, var(--primary-red) 0%, #8B0000 100%);
     border-radius: 4px;
+    box-shadow: 0 0 5px rgba(255, 0, 51, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff1a4d;
+    background: linear-gradient(180deg, #ff1a4d 0%, #A00000 100%);
+    box-shadow: 0 0 8px rgba(255, 0, 51, 0.8);
+}
+
+/* Minimal glow effects to show background image clearly */
+.detail-card, .rule-item, .info-box, .registration-details {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 0, 51, 0.15);
+    box-shadow: 
+        0 0 5px rgba(139, 0, 0, 0.1),
+        inset 0 0 5px rgba(255, 0, 51, 0.03);
+}
+
+.detail-card:hover, .rule-item:hover {
+    box-shadow: 
+        0 0 8px rgba(139, 0, 0, 0.15),
+        inset 0 0 8px rgba(255, 0, 51, 0.05);
 }
